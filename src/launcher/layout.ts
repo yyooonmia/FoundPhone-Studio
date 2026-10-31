@@ -134,26 +134,17 @@ export function validateLayout(raw: unknown, input: Work) {
 export function useDeviceLayout(authored: Work, creator = false) {
   const base = useMemo(() => ensureAppStore(authored), [authored]);
   const key = "foundphone-layout-v1:" + base.id;
-  const [stored, setStored] = useState(() => {
-      try {
-        const text = localStorage.getItem(key);
-        return text
-          ? validateLayout(JSON.parse(text), base)
-          : defaultLayout(base);
-      } catch {
-        return defaultLayout(base);
-      }
-    }),
-    [error, setError] = useState("");
+  // Player desktop changes live only in React state for the current visit.
+  // Remove legacy persisted layouts so old installations cannot restore them.
+  const [stored, setStored] = useState(() => defaultLayout(base));
   const layout = stored.workId === base.id ? stored : defaultLayout(base);
   useEffect(() => {
-    if (creator) return;
     try {
-      localStorage.setItem(key, JSON.stringify(layout));
+      localStorage.removeItem(key);
     } catch {
-      setError("桌面布局保存失败，请检查本地存储空间");
+      // Storage may be unavailable; the in-memory layout still works.
     }
-  }, [layout, key, creator]);
+  }, [key]);
   const change = (fn: (draft: DeviceLayout) => void) =>
     setStored((old) => {
       const next = structuredClone(
@@ -183,7 +174,7 @@ export function useDeviceLayout(authored: Work, creator = false) {
   return {
     work,
     layout,
-    error,
+    error: "",
     change,
     importLayout: (raw: unknown) => setStored(validateLayout(raw, base)),
   };
