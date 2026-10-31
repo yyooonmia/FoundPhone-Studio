@@ -10,7 +10,7 @@
     "time": "21:18",
     "battery": 94,
     "network": "5G",
-    "wallpaper": "apple-wwdc26",
+    "wallpaper": "custom-p1",
     "passcode": "0913"
   },
   "installedApps": [
@@ -93,7 +93,7 @@
       "id": "older-brother",
       "name": "哥哥♡",
       "phone": "",
-      "avatar": "",
+      "avatar": "./assets/story/p2-brother-avatar.webp",
       "bio": ""
     }
   ],
@@ -118,7 +118,7 @@
           "body": "",
           "time": "2026-10-11 20:56",
           "kind": "image",
-          "media": "",
+          "media": "./assets/story/p3-chat-photo.webp",
           "senderId": "older-brother"
         },
         {
