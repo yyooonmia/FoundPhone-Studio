@@ -97,7 +97,6 @@ export const useStudio = create<Store>((set, get) => ({
   remove: async (id) => {
     await get().flush();
     await db.works.delete(id);
-    await db.saves.delete(id);
     const works = get().works.filter((w) => w.id !== id);
     if (!works.length) {
       await get().add();
