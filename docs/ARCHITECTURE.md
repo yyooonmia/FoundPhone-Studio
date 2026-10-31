@@ -4,7 +4,7 @@
 
 stories/template/story.json 是可替换的中性演示；stories/blank/story.json 是纯空白起点。scripts/story.mjs 通过 src/story-engine/compiler.ts 编译为 Work v1，校验稳定 ID、引用、安全素材和剧情图。testStory.ts 重放测试路径，检查密码、隐藏内容和结局。
 
-src/engine.ts 是纯状态转移引擎。Work 在游玩中保持不可变，Runtime 保存玩家进度、事件、来电、通知和选择。src/persistence.ts 使用 IndexedDB，作者数据与玩家存档分表存储。
+src/engine.ts 是纯状态转移引擎。Work 在游玩中保持不可变，Runtime 保存玩家进度、事件、来电、通知和选择。src/persistence.ts 使用 IndexedDB 保存作者作品数据；玩家 Runtime 只存在当前页面会话中，不读取或写入个人存档。数据库版本 2 移除旧版玩家存档表，保留作者作品表。
 
 src/registry.ts 注册 App；Phone、AppSkins、skins 与 src/apps 等现有组件负责页面呈现。桌面安装状态与布局由现有 App 管理和 launcher 模块处理。App 注册数量不代表每个 App 的全部原生页面均已完成。
 
