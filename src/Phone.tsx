@@ -200,7 +200,7 @@ function PhoneRuntime({
     // read or write the author's IndexedDB-backed story workspace.
     setOwn(dispatch(work, initialRuntime(work), "start"));
     setReady(true);
-  }, [work, creator, external]);
+  }, [work.id, work.updatedAt, creator, external]);
   useEffect(() => {
     if (creator || !ready) return;
     const interval = setInterval(() => {
