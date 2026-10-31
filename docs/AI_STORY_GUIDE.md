@@ -6,7 +6,7 @@
 2. 将自然语言、人物设定、聊天和素材整理为结构化数据。使用稳定英文 ID 关联联系人、消息、照片、事件和 App。不要擅自添加重大剧情反转；关键设定缺失时向作者确认。
 3. 优先只修改 stories/。复用现有 App、事件和数据字段，不为了剧情重写 React 页面或共享引擎。App ID 见 src/registry.ts。KakaoTalk 为 kakao，X 为 twitter。
 4. 运行 npm run story:validate、npm run story:test、npm run build。每个结局提供可通过的测试路径；密码、隐藏内容、来电与跨 App 引用都应验证。
-5. 运行 npm run story:preview，按显示的网址游玩。检查移动视口、刷新和存档。剧情变更时递增 revision，避免旧进度混入新作品。
+5. 运行 npm run story:preview，按显示的网址游玩。检查移动视口和刷新后重新开始的行为。玩家体验不保存个人进度；作者作品数据由创作工作区独立保存。剧情变更时递增 revision。
 6. 默认脚本可以直接替换。其他脚本使用 npm run story:validate -- stories/你的目录/story.json 校验；预览和正式构建通过 STORY_FILE 环境变量选择。
 7. JSON 与包含一个 json 围栏的 Markdown 可以编译。自然语言必须先由 AI 转为数据；不支持直接执行 YAML、HTML、JavaScript 或外部代码。
 8. 不导入私人账号、真实聊天或没有公开使用权的素材。不要把浏览器玩家存档当作者脚本。发布前确认授权，保留代码和依赖的许可通知；不自动执行 Fork、Star、Push 或发布。
