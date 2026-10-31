@@ -284,7 +284,7 @@ function PhoneRuntime({
         (_, i) => i !== index,
       ),
     });
-  if (!ready) return <div className="phone-loading">正在恢复进度…</div>;
+  if (!ready) return <div className="phone-loading">正在启动手机…</div>;
   return (
     <div
       ref={shell}
